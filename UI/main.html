@@ -71,16 +71,17 @@
       text-align: center;
       margin: 20px 10px 0;
       padding: 0 30px;
-      font-size: 55px;
-      font-family: 'Rubik Doodle Shadow', serif;
+      font-size: 40px;
+      font-family: "DM Serif Text", serif;
+      font-weight: 400;
+      color:#003366
     }
 
     p {
       font-size: 25px;
       text-align: center;
       color: black; /* Darkened the text color */
-      font-size: 40px;
-      font-family: 'Raleway', serif;
+      font-family: 'Montserrat', serif;
     }
 
     ol {
@@ -168,8 +169,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      height: 600px;
-      margin: 20px; /* Add margin for spacing between sections */
+      margin: 5px 0; /* Reduce top and bottom margins */
       position: relative; /* Position relative for positioning the button */
     }
 
@@ -215,14 +215,13 @@
         right: 40px;
         height: 80px;
         width: 80px;
-        background-color: #007BFF;
+        background-color: #66b2ff;
         color: #fff;
         border: none;
         border-radius: 5px;
         padding: 10px 20px;
         cursor: pointer;
     }
-
     #scrollToTopBtn:hover {
         background-color: #0056b3;
     }
@@ -232,8 +231,8 @@
 <body>
   <!-- Navigation Bar -->
   <nav>
-   <div></div> 
-    <button class="nav-button" onclick="return openRosacea()">Bacteriophage Search</button>
+    <img style="height: 15%; width: 15%;" src="logo.webp" alt="logo">
+    <button class="nav-button" onclick="scrollToSection('main1')">Home</button>
     <button class="nav-button" onclick="scrollToSection('main2')">Insert Details</button>
     <button class="nav-button" onclick="scrollToSection('main3')">Data Visualization</button>
     <button class="nav-button" onclick="return openRosacea()">Contact</button>
@@ -242,15 +241,16 @@
   <!-- Content Sections -->
   <div id="main1" class="center-container">
     <section>
-      <h2>Home</h2>
-      <p>Discover the passion and expertise behind Skinsnap. We are a dedicated team of four individuals committed to making a positive impact on people's lives by providing valuable information and support for those dealing with skin diseases. At Skinsnap, our mission is to empower individuals affected by skin diseases with knowledge, resources, and a sense of community. We believe that everyone deserves access to accurate information and a supportive network to navigate their journey towards healthier skin. Are you a healthcare professional, researcher, or organization working towards improved skin health? Let's collaborate! Fill out the contact form to provide an accesible tool to your patients or if you have any questions.</p>
+      <h2>Introduction</h2>
+      <p>Traditional antibiotics often fail, especially against multidrug-resistant (MDR) bacteria. Bacteriophages (phages), discovered in 1919, provide a promising therapeutic opportunity but have seen limited use due to a lack of investment in phage standardization and regulatory frameworks. 
+        This research seeks to explore phage therapy as a viable alternative or complement to conventional antibiotics, aiming to establish standardized testing methodologies for clinical application. By harnessing artificial intelligence to create personalized combinations of phages, specifically built to patients needs, the chances of resistance developing drops dramatically.</p>
     </section>
   </div>
   <button id="scrollToTopBtn">&#8679; Top</button>
   <div id="main2" class="center-container">
     <section>
       <h2>Instructions</h2>
-      <ol style="font-size: 30px;">
+      <ol style="font-size: 25px;">
         <li>Scroll Down to Picture Upload or simply click on the button for picture upload.</li>
         <li>Click on the upload button and select an appropriate picture of your face.</li>
         <li>You will then be taken to a page where there will be a list of recommended products the ones to the very left are our cheaper, but amazing in quality products designed for your needs.</li>
@@ -261,13 +261,13 @@
   <br>
   <div id="main3" class="center-container">
     <section>
-        <h2>Picture Upload</h2>
-        <form id="uploadForm" onsubmit="return openRosacea()">
+        <h2>Use for AI part</h2>
+        <form id="uploadForm">
             <input type="file" id="myFile" name="filename">
             <input type="submit" value="Upload">
         </form>
     </section>
-</div>
+  </div>
 <script>
     function openRosacea() {
         // Add your logic to open Rosacea.html here

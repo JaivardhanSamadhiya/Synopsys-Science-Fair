@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Model</title>
+</head>
+<body>
+    <style>
+        .center-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 60vh; /* Adjusted minimum height for better centering */
+        }
+        input[type="file"],
+        input[type="submit"] {
+          width: 80%;
+          padding: 10px;
+          margin: 10px 0;
+          box-sizing: border-box;
+          border: 1px solid #ccc; /* Added a border for input elements */
+          border-radius: 4px; /* Rounded corners */
+        }
+        input[type="submit"],
+        .scroll-button {
+          background-color: #333;
+          color: #fff;
+          border: none;
+          cursor: pointer;
+          text-decoration: none; /* Removed underline */
+          padding: 12px 24px;
+          transition: background-color 0.3s, color 0.3s; /* Added color transition */
+        }
+
+        input[type="submit"]:hover,
+        .scroll-button:hover {
+          background-color: #555; /* Darker background on hover */
+        }
+
+    /* Adjustments for the question input */
+        #bottom input[type="text"] {
+          width: calc(80% - 22px); /* Adjusted width for both input fields */
+          padding: 10px;
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+          padding: 2vw 4vw;
+          width: 90%;
+          max-width: 600px;
+          border-radius: 10px;
+          font-family: Arial, sans-serif;
+          background: white; /* Optional: set a background for the form */
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for better visibility */
+        }
+        form input, form textarea{
+          border: 0;
+          margin: 10px 0;
+          padding: 20px;
+          outline: none;
+          background: #f5f5f5;
+          font-size: 16px;
+          margin-bottom: 20px;
+          font-family: Arial;
+        }
+        ::placeholder{
+          font-family: Arial;
+        }
+        form button{
+          padding: 15px;
+          background: #ff5361;
+          color: #fff;
+          border: 0;
+          font-size: 18px;
+          outline: none;
+          cursor: pointer;
+          width: 150px;
+          margin: 20px auto 0;
+          border-radius: 30px;
+        }
+        form h1{
+          font-weight: 900;
+          text-align: center;
+          font-size: 35px;
+          font-family: "Oswald", serif;
+          font-optical-sizing: auto
+        }
+
+        section {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin: 5px 0; /* Reduce top and bottom margins */
+          position: relative; /* Position relative for positioning the button */
+        }
+    </style>
+
+    <div id="main3" class="center-container">
+    <section>
+        <form id="uploadForm">
+            <h1>Upload CSV File</h1>
+            <input type="file" id="myFile" name="filename">
+            <input type="submit" value="Upload">
+        </form>
+    </section>
+  </div>
+</body>
+</html>
