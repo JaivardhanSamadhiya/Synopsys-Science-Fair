@@ -247,17 +247,12 @@
     </section>
   </div>
   <button id="scrollToTopBtn">&#8679; Top</button>
-  <div id="main2" class="center-container">
-    <section>
-      <h2>Instructions</h2>
-      <ol style="font-size: 25px;">
-        <li>Scroll Down to Picture Upload or simply click on the button for picture upload.</li>
-        <li>Click on the upload button and select an appropriate picture of your face.</li>
-        <li>You will then be taken to a page where there will be a list of recommended products the ones to the very left are our cheaper, but amazing in quality products designed for your needs.</li>
-        <li>Simply click on the "Buy Now" button below the product to buy it or be taken to the website of products from other brands.</li>
-      </ol>
-    </section>
-  </div>
+    <script>
+      function openFeatures() {
+        window.open('features.html');
+      }
+    </script>
+  <button id="main2" onclick="openFeatures()">Features</button>
   <br>
   <div id="main3" class="center-container">
     <section>
@@ -271,7 +266,7 @@
 <script>
     function openRosacea() {
         // Add your logic to open Rosacea.html here
-        window.location.href = 'contact.html';
+        window.open('contact.html');
 
         // Return false to prevent the default form submission
         return false;
