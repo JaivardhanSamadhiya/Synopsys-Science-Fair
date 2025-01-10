@@ -1,0 +1,37 @@
+from Bio import Entrez
+import pandas as pd
+
+def search_phages(query, max_records=100):
+    Entrez.email = "example@gmail.com"  # Always set your email
+    handle = Entrez.esearch(db="nucleotide", term=query, retmax=max_records, retmode="xml")
+    record = Entrez.read(handle)
+    ids = record["IdList"]
+    
+    return ids
+
+# Define a function to fetch phage data from GenBank
+def fetch_phage_data(ids):
+    phages = []
+    for phage_id in ids:
+        handle = Entrez.efetch(db="nucleotide", id=phage_id, retmode="xml")
+        record = Entrez.read(handle)
+        
+        # Assuming correct keys after debugging
+        phage_name = record[0].get("GBSeq_locus", "Unknown")
+        accession_number = record[0].get("GBSeq_accession", "Unknown")  # Adjusted key
+        genome_size = record[0].get("GBSeq_length", "Unknown")
+        host_range = record[0].get("GBSeq_organism", "Unknown")
+        
+        phages.append([phage_name, accession_number, genome_size, host_range])
+    
+    return phages
+
+phage_ids = search_phages("Staphylococcus phage", max_records=100)
+
+phage_data = fetch_phage_data(phage_ids)
+
+df = pd.DataFrame(phage_data, columns=["Phage Name", "Accession Number", "Genome Size (bp)", "Host Range"])
+
+print(df)
+
+df.to_csv("staph_phages.csv", index=False)
