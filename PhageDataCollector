@@ -15,19 +15,27 @@ def fetch_phage_data(ids):
     for phage_id in ids:
         handle = Entrez.efetch(db="nucleotide", id=phage_id, retmode="xml")
         record = Entrez.read(handle)
-        
 
         phage_name = record[0].get("GBSeq_locus", "Unknown")
         genome_size = record[0].get("GBSeq_length", "Unknown")
         host_range = record[0].get("GBSeq_organism", "Unknown")
-        source_db = "NCBI GenBank"  
-        lytic_lysogenic = "Unknown"  # Placeholder unless data is parsed from record
-        phage_type = "Bacteriophage"  
+        source_db = "NCBI GenBank"
+
+        # Default to "Unknown"
+        lytic_lysogenic = "Unknown"
         
-        # Append the extracted data
+        if "endolysin" in str(record[0]) or "holin" in str(record[0]):
+            lytic_lysogenic = "Lytic"
+
+        elif "integrase" in str(record[0]) or "prophage" in str(record[0]):
+            lytic_lysogenic = "Lysogenic"
+        
+        phage_type = "Bacteriophage"
+        
         phages.append([phage_name, genome_size, host_range, phage_type, source_db, lytic_lysogenic])
     
     return phages
+
 
 phage_ids = search_phages("Staphylococcus phage", max_records=100)
 phage_data = fetch_phage_data(phage_ids)
