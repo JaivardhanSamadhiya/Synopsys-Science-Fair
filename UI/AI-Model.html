@@ -6,205 +6,203 @@
     <title>Phage Host Prediction</title>
     <style>
         :root {
-            --primary-dark: #1a1a1a;
+            --primary-light: #ffffff;
+            --primary-dark: #000000;
             --secondary-dark: #2d2d2d;
             --accent-blue: #1e3d59;
+            --accent-green: #4caf50;
+            --hover-gray: #f0f0f0;
+            --text-dark: #000000;
             --text-light: #e0e0e0;
-            --error-red: #ff6b6b;
             --border-radius: 8px;
+            --padding: 1.5rem;
+            --margin: 2rem;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: system-ui, sans-serif;
         }
 
         body {
-            background-color: var(--primary-dark);
-            color: var(--text-light);
-            padding: 2rem;
+            background-color: var(--primary-light);
+            color: var(--text-dark);
+            font-size: 16px;
+            padding: var(--margin);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .header {
+        h1 {
             text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .header h1 {
             font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: var(--margin);
         }
 
-        .upload-section {
+        .file-upload-container {
+            width: 120%; /* Increased by 20% */
+            max-width: 750px;
+            padding: var(--padding);
             background-color: var(--secondary-dark);
-            padding: 2rem;
             border-radius: var(--border-radius);
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: auto; /* Reset to the original height */
         }
 
-        .file-input-wrapper {
-            border: 2px dashed var(--accent-blue);
-            padding: 2rem;
+        input[type="file"] {
+            padding: 1rem;
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            border: 2px solid var(--primary-dark);
+            border-radius: var(--border-radius);
+            width: 100%;
             cursor: pointer;
-            border-radius: var(--border-radius);
+            margin-top: 1rem;
         }
 
-        .file-input {
-            display: none;
+        input[type="file"]:focus {
+            outline: none;
         }
 
-        .submit-btn {
-            background-color: var(--accent-blue);
-            color: white;
+        button {
             padding: 1rem 2rem;
+            background-color: var(--accent-blue);
+            color: var(--primary-light);
+            border: none;
             border-radius: var(--border-radius);
             cursor: pointer;
             width: 100%;
-            font-size: 1rem;
+            font-size: 1.2rem;
             margin-top: 1rem;
-            border: none;
         }
 
-        .submit-btn:disabled {
+        button:hover {
+            background-color: #177598;
+        }
+
+        button:disabled {
             background-color: #666;
             cursor: not-allowed;
         }
 
-        .status {
+        #status {
             margin-top: 1rem;
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            display: none;
-        }
-
-        .error {
-            background-color: rgba(255, 0, 0, 0.1);
-            color: var(--error-red);
-        }
-
-        .success {
-            background-color: rgba(0, 255, 0, 0.1);
-            color: #4caf50;
-        }
-
-        .loading {
-            display: none;
             text-align: center;
-            margin: 1rem 0;
         }
 
-        .results-table {
-            width: 100%;
+        table {
+            width: 80%;  /* Adjusted width for centering */
             border-collapse: collapse;
-            margin-top: 1rem;
+            margin-top: 2rem;
+            background-color: var(--primary-light);
+            border-radius: var(--border-radius);
+            display: block;
+            overflow-x: auto;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center; /* Center the text in the table */
         }
 
-        .results-table th,
-        .results-table td {
-            padding: 0.75rem;
-            text-align: left;
+        th, td {
+            padding: 1rem;
             border-bottom: 1px solid #444;
         }
 
-        .results-table th {
+        th {
             background-color: var(--accent-blue);
+            color: var(--primary-light);
         }
 
-        #resultsSection {
-            display: none;
-            background-color: var(--secondary-dark);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            margin-top: 2rem;
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        td {
+            color: var(--primary-dark);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>Phage Host Prediction</h1>
-            <p>Upload your CSV file for analysis</p>
-        </header>
+    <h1>Phage Host Prediction</h1>
 
-        <main>
-            <section class="upload-section">
-                <div class="file-input-wrapper" onclick="document.getElementById('fileInput').click()">
-                    <input type="file" id="fileInput" class="file-input" accept=".csv">
-                    <p id="dropText">📄 Drop your CSV file here or click to browse</p>
-                    <p id="fileInfo" style="margin-top: 1rem; display: none;"></p>
-                </div>
-                <button id="submitBtn" class="submit-btn" disabled>Analyze Data</button>
-                <div id="loadingStatus" class="loading">Processing data...</div>
-                <div id="errorStatus" class="status error"></div>
-            </section>
-
-            <section id="resultsSection">
-                <h2>Prediction Results</h2>
-                <table class="results-table">
-                    <thead>
-                        <tr>
-                            <th>Sample</th>
-                            <th>Prediction</th>
-                            <th>Confidence</th>
-                        </tr>
-                    </thead>
-                    <tbody id="resultsBody"></tbody>
-                </table>
-            </section>
-        </main>
+    <div class="file-upload-container">
+        <input type="file" id="fileInput" accept=".csv">
+        <button id="submitBtn">Upload & Predict</button>
     </div>
 
+    <p id="status"></p>
+
+    <table id="resultsTable" border="1" style="display:none;">
+        <thead>
+            <tr>
+                <th>Sample</th>
+                <th>Prediction</th>
+                <th>Confidence</th>
+            </tr>
+        </thead>
+        <tbody id="resultsBody"></tbody>
+    </table>
+
     <script>
-        const fileInput = document.getElementById('fileInput');
-        const submitBtn = document.getElementById('submitBtn');
-        const loadingStatus = document.getElementById('loadingStatus');
-        const errorStatus = document.getElementById('errorStatus');
-        const resultsSection = document.getElementById('resultsSection');
-        const resultsBody = document.getElementById('resultsBody');
+        const fileInput = document.getElementById("fileInput");
+        const submitBtn = document.getElementById("submitBtn");
+        const statusText = document.getElementById("status");
+        const resultsTable = document.getElementById("resultsTable");
+        const resultsBody = document.getElementById("resultsBody");
 
-        fileInput.addEventListener('change', (e) => {
-            if (e.target.files[0]) {
-                submitBtn.disabled = false;
-            }
-        });
-
-        submitBtn.addEventListener('click', async () => {
+        submitBtn.addEventListener("click", async () => {
             const file = fileInput.files[0];
-            if (!file) return;
+            if (!file) {
+                alert("Please select a file.");
+                return;
+            }
+
+            console.log("📂 Selected file:", file.name);
 
             const formData = new FormData();
-            formData.append('file', file);
+            formData.append("file", file);
 
-            loadingStatus.style.display = 'block';
-            errorStatus.style.display = 'none';
-            resultsSection.style.display = 'none';
+            statusText.textContent = "Uploading...";
+            resultsTable.style.display = "none"; // Hide previous results
 
             try {
-                const response = await fetch('http://127.0.0.1:5000/predict', {
-                    method: 'POST',
-                    body: formData,
+                const response = await fetch("http://127.0.0.1:5000/predict", {
+                    method: "POST",
+                    body: formData
                 });
-                const data = await response.json();
 
-                loadingStatus.style.display = 'none';
+                const data = await response.json();
+                console.log("🔍 Server Response:", data);
+
                 if (data.error) {
-                    errorStatus.textContent = data.error;
-                    errorStatus.style.display = 'block';
-                } else {
-                    resultsSection.style.display = 'block';
-                    resultsBody.innerHTML = data.prediction.map((pred, i) => `
-                        <tr><td>Sample ${i + 1}</td><td>${pred}</td><td>${data.confidence[i] * 100}%</td></tr>
-                    `).join('');
+                    statusText.textContent = "Error: " + data.error;
+                    return;
                 }
-            } catch {
-                errorStatus.textContent = 'Server error.';
-                errorStatus.style.display = 'block';
+
+                // Show results
+                resultsBody.innerHTML = data.prediction.map((pred, i) => ` 
+                    <tr>
+                        <td>Sample ${i + 1}</td>
+                        <td>${pred}</td>
+                        <td>${(data.confidence[i] * 100).toFixed(2)}%</td>
+                    </tr>
+                `).join("");
+
+                resultsTable.style.display = "block";
+                statusText.textContent = "✅ Predictions Ready!";
+            } catch (error) {
+                console.error("❌ Fetch error:", error);
+                statusText.textContent = "Server error!";
             }
         });
     </script>

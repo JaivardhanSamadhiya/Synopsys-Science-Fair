@@ -1,430 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bacteriophage AI Combinations</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik+Lines&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400&display=swap">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Barlow', sans-serif;
-      background-color: #f8f8f8; /* Light gray background */
-    }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bacteriophage AI Combinations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Lines&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400&display=swap">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Barlow', sans-serif;
+            background-color: #f8f8f8;
+        }
 
-    nav {
-      background: url('SIGMAOHIO.png') center/cover no-repeat;
-      position: relative;  
-      padding: 10px;
-      text-align: center;
-      display: flex;
-      height: 800px; /* Reduced the height for a more compact navigation bar */
-      background-size: 100%;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added a subtle shadow for depth */
-      padding: 0px;
-    }
-    .nav-button {
-      border: none;
-      padding: 0px;
-      margin: 0px;
-      cursor: pointer;
-      text-decoration: none; /* Removed underline */
-      display: inline-block;
-      width: 100%;
-      height: 15%;
-      background-color: transparent;
-      color: #333; /* Darkened the text color */
-      transition: background-color 0.3s, color 0.3s; /* Added color transition */
-      font-size: 25px;
-      font-family: 'Raleway', serif;
-      background-color: white;
-    }
-    .nav-button:hover {
-      background-color: #ddd; /* Light gray on hover */
-      color: #000; /* Dark text on hover */
-      font-weight: bold;
-    }
+        nav {
+            display: flex;
+            align-items: stretch;
+            height: 140px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
 
-    .center-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 60vh; /* Adjusted minimum height for better centering */
-    }
-    .row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    h2 {
-      text-align: center;
-      margin: 20px 10px 0;
-      padding: 0 30px;
-      font-size: 40px;
-      font-family: "DM Serif Text", serif;
-      font-weight: 400;
-      color:#003366
-    }
+        nav img {
+            height: 100%;
+            width: auto;
+        }
 
-    p {
-      font-size: 25px;
-      text-align: center;
-      color: black; /* Darkened the text color */
-      font-family: 'Montserrat', serif;
-      margin-left: 5%;
-      margin-right: 5%;
-    }
+        .nav-button {
+            border: none;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+            text-decoration: none;
+            flex: 1;
+            background-color: white;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 25px;
+            font-family: 'Raleway', serif;
+        }
 
-    ol {
-      font-size: 35px;
-      text-align: left;
-      max-width: 600px;
-      margin: 0 auto;
-      color: black; /* Darkened the text color */
-      font-family: 'Raleway', serif;
-    }
+        .nav-button:hover {
+            background-color: #ddd;
+            color: #000;
+            font-weight: bold;
+        }
 
-    input[type="file"],
-    input[type="submit"] {
-      width: 80%;
-      padding: 10px;
-      margin: 10px 0;
-      box-sizing: border-box;
-      border: 1px solid #ccc; /* Added a border for input elements */
-      border-radius: 4px; /* Rounded corners */
-    }
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+        }
 
-    
+        h2 {
+            text-align: center;
+            margin: 20px 10px 0;
+            padding: 0 30px;
+            font-size: 40px;
+            font-family: "DM Serif Text", serif;
+            font-weight: 400;
+            color: #003366;
+        }
 
-    input[type="submit"],
-    .scroll-button {
-      background-color: #333;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      text-decoration: none; /* Removed underline */
-      padding: 12px 24px;
-      transition: background-color 0.3s, color 0.3s; /* Added color transition */
-    }
+        p {
+            font-size: 25px;
+            text-align: center;
+            color: black;
+            font-family: 'Montserrat', serif;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
 
-    input[type="submit"]:hover,
-    .scroll-button:hover {
-      background-color: #555; /* Darker background on hover */
-    }
+        h3 {
+            text-align: center;
+            text-decoration: none;
+            font-family: 'Raleway';
+            font-size: 60px;
+            margin-bottom: 0;
+        }
 
-    /* Adjustments for the question input */
-    #bottom input[type="text"] {
-      width: calc(80% - 22px); /* Adjusted width for both input fields */
-      padding: 10px;
-    }
-    form{
-      display: flex;
-      flex-direction: column;
-      padding: 2vw 4vw;
-      width: 90%;
-      max-width: 600px;
-      border-radius: 10px;
-      font-family: Arial;
-    }
-    form input, form textarea{
-      border: 0;
-      margin: 10px 0;
-      padding: 20px;
-      outline: none;
-      background: #f5f5f5;
-      font-size: 16px;
-      margin-bottom: 20px;
-      font-family: Arial;
-    }
-    ::placeholder{
-      font-family: Arial;
-    }
-    form button{
-      padding: 15px;
-      background: #ff5361;
-      color: #fff;
-      border: 0;
-      font-size: 18px;
-      outline: none;
-      cursor: pointer;
-      width: 150px;
-      margin: 20px auto 0;
-      border-radius: 30px;
-    }
-    form h2{
-      margin-bottom: 20px;
-      font-weight: 800px;
-    }
+        .sigma {
+            width: 10%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: whitesmoke;
+        }
 
-    section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 5px 0; /* Reduce top and bottom margins */
-      position: relative; /* Position relative for positioning the button */
-    }
+        #scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            height: 80px;
+            width: 80px;
+            background-color: #66b2ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
 
-    img {
-      height: 100%;
-      width: auto;
-    }
+        #scrollToTopBtn:hover {
+            background-color: #0056b3;
+        }
 
-    #bottom_1 button {
-      position: absolute; /* Position absolute for overlapping */
-      bottom: 10px; /* Adjusted bottom position for spacing */
-      left: 50%; /* Center the button horizontally */
-      transform: translateX(-50%); /* Center the button horizontally */
-      display: none;
-    }
-    .sigma{
-      width: 10%;
-      padding: 10px;
-      margin: 10px 0;
-      box-sizing: border-box;
-      border: 1px solid #ccc; /* Added a border for input elements */
-      border-radius: 4px; /* Rounded corners */
-      background-color: whitesmoke;
-    }
+        form {
+            display: flex;
+            flex-direction: column;
+            padding: 2vw 4vw;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
 
-    h3 {
-      text-align: center;
-      text-decoration: none;
-      font-family: 'Raleway';
-      font-size: 60px;
-      margin-bottom: 0;
-    }
+        form input, form textarea {
+            border: 0;
+            margin: 10px 0;
+            padding: 20px;
+            outline: none;
+            background: #f5f5f5;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
 
-    /* Additional styles for the Recommended Skincare section */
+        form button {
+            padding: 15px;
+            background: #ff5361;
+            color: #fff;
+            border: 0;
+            font-size: 18px;
+            outline: none;
+            cursor: pointer;
+            width: 150px;
+            margin: 20px auto 0;
+            border-radius: 30px;
+        }
 
-    /* Adjusted the style for the bottom sections */
+        #bottom_1 section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 5px 0;
+            position: relative;
+        }
 
-    /* Responsive adjustments */
-    #scrollToTopBtn {
-        display: none;
-        position: fixed;
-        bottom: 40px;
-        right: 40px;
-        height: 80px;
-        width: 80px;
-        background-color: #66b2ff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 20px;
-        cursor: pointer;
-    }
-    #scrollToTopBtn:hover {
-        background-color: #0056b3;
-    }
-  </style>
+        #bottom_1 img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .buy-btn {
+            display: none;
+            position: absolute;
+            bottom: 10px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
-
 <body>
-  <!-- Navigation Bar -->
-  <nav>
-    <img style="height: 15%; width: 15%;" src="logo.webp" alt="logo">
-    <button class="nav-button" onclick="scrollToSection('main1')">Home</button>
-    <button class="nav-button" onclick="return openAIMODEL()">Insert Details</button>
-    <button class="nav-button" onclick="scrollToSection('main3')">Data Visualization</button>
-    <button class="nav-button" onclick="return openRosacea()">Contact</button>
-  </nav>
+    <nav>
+        <img src="logo.webp" alt="logo">
+        <button class="nav-button" onclick="scrollToSection('main1')">Home</button>
+        <button class="nav-button" onclick="return openAIMODEL()">Insert Details</button>
+        <button class="nav-button" onclick="scrollToSection('main3')">Data Visualization</button>
+        <button class="nav-button" onclick="return openRosacea()">Contact</button>
+    </nav>
 
-  <!-- Content Sections -->
-  <div id="main1" class="center-container">
-    <section>
-      <h2>Introduction</h2>
-      <p>Traditional antibiotics often fail, especially against multidrug-resistant (MDR) bacteria. Bacteriophages (phages), discovered in 1919, provide a promising therapeutic opportunity but have seen limited use due to a lack of investment in phage standardization and regulatory frameworks. 
-        This research seeks to explore phage therapy as a viable alternative or complement to conventional antibiotics, aiming to establish standardized testing methodologies for clinical application. By harnessing artificial intelligence to create personalized combinations of phages, specifically built to patients needs, the chances of resistance developing drops dramatically.</p>
-    </section>
-  </div>
-  <button id="scrollToTopBtn">&#8679; Top</button>
-    <script>
-      function openAIMODEL() {
-        window.open('AI-Model.html');
-      }
-    </script>
-    <script>
-      function openFeatures() {
-        window.open('features.html');
-      }
-    </script>
-  <button id="main2" onclick="openFeatures()">Features</button>
-  <br>
-  <div id="main3" class="center-container">
-    <section>
-        <h2>Use for AI part</h2>
-        <form id="uploadForm">
-            <input type="file" id="myFile" name="filename">
-            <input type="submit" value="Upload">
-        </form>
-    </section>
-  </div>
-<script>
-    function openRosacea() {
-        // Add your logic to open Rosacea.html here
-        window.open('contact.html');
-
-        // Return false to prevent the default form submission
-        return false;
-    }
-  </script>
-  <div id="bottom_1">
-    <h2>Recommended Skincare</h2>
-    <br>
-    <h3>Best Sellers</h3>
-    <br>
-    <div style="display: flex; flex-direction: column;">
-      <section>
-        <img src="Hyperpigmentation%20conrad%20challenge.png" alt="Hyperpigmentation_Solution_Image" id="sigma">
-        <button id="sigma-btn" class="sigma">Buy Now</button>
-      </section>
-      <p style="font-size: 25px;">Price: $9.99</p>
-      <section>
-        <img src="ohio cream.png" alt="Fluorouracil Cream" id="ohio">
-        <button id="ohio-btn" class="sigma">Buy Now</button>
-      </section>
-      <p style="font-size: 25px;">Price: $11.99</p>
-      <section>
-        <img src="SKIBIDI_2.png" alt="Moisturizer" id="fish">
-        <button id="fish-btn" class="sigma">Buy Now</button>
-      </section>
-      <p style="font-size: 25px;">Price: $7.99</p>
-      <section>
-        <img src="Sunscreen.png" alt="Sunscreen" id="fanum">
-        <button id="fanum-btn" class="sigma">Buy Now</button>
-      </section>
-      <p style="font-size: 25px;">Price: $6.99</p>
+    <div id="main1" class="center-container">
+        <section>
+            <h2>Introduction</h2>
+            <p>Traditional antibiotics often fail, especially against multidrug-resistant (MDR) bacteria. Bacteriophages (phages), discovered in 1919, provide a promising therapeutic opportunity but have seen limited use due to a lack of investment in phage standardization and regulatory frameworks. This research seeks to explore phage therapy as a viable alternative or complement to conventional antibiotics, aiming to establish standardized testing methodologies for clinical application. By harnessing artificial intelligence to create personalized combinations of phages, specifically built to patients needs, the chances of resistance developing drops dramatically.</p>
+        </section>
     </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  <script>
-    document.getElementById('sigma-btn').addEventListener('click', function() {
-      Swal.fire({
-        position: 'top',
-        icon: 'success',
-        title: 'Purchase Succesful',
-        text: 'One item added to cart.',
-        showConfirmButton: false,
-        timer: 2000 // Set the timer to automatically close the popup after 2 seconds
-      });
-    });
-    document.getElementById('ohio-btn').addEventListener('click', function() {
-      Swal.fire({
-        position: 'top',
-        icon: 'success',
-        title: 'Purchase Succesful',
-        text: 'One item added to cart.',
-        showConfirmButton: false,
-        timer: 2000 // Set the timer to automatically close the popup after 2 seconds
-      });
-    });
-    document.getElementById('fish-btn').addEventListener('click', function() {
-      Swal.fire({
-        position: 'top',
-        icon: 'success',
-        title: 'Purchase Succesful',
-        text: 'One item added to cart.',
-        showConfirmButton: false,
-        timer: 2000 // Set the timer to automatically close the popup after 2 seconds
-      });
-    });
-    document.getElementById('fanum-btn').addEventListener('click', function() {
-      Swal.fire({
-        position: 'top',
-        icon: 'success',
-        title: 'Purchase Succesful',
-        text: 'One item added to cart.',
-        showConfirmButton: false,
-        timer: 2000 // Set the timer to automatically close the popup after 2 seconds
-      });
-    });
 
-    // Add event listeners for hover effect
-    document.getElementById('sigma-btn').addEventListener('mouseover', function() {
-      // Show the button on hover
-      document.getElementById('sigma-btn').style.display = 'block';
-    });
-    document.getElementById('sigma').addEventListener('mouseout', function() {
-      // Show the button on hover
-      document.getElementById('sigma-btn').style.display = 'none';
-    });
-    document.getElementById('sigma').addEventListener('mouseover', function() {
-      // Show the button on hover
-      document.getElementById('sigma-btn').style.display = 'block';
-    });
-    //ohio and ohio-btn now
-    document.getElementById('ohio-btn').addEventListener('mouseover', function() {
-      // Show the button on hover
-      document.getElementById('ohio-btn').style.display = 'block';
-    });
-    document.getElementById('ohio').addEventListener('mouseout', function() {
-      // Show the button on hover
-      document.getElementById('ohio-btn').style.display = 'none';
-    });
-    document.getElementById('ohio').addEventListener('mouseover', function() {
-      // Show the button on hover
-      document.getElementById('ohio-btn').style.display = 'block';
-    });
-    //fish and fish-btn
-    document.getElementById('fish-btn').addEventListener('mouseover', function() {
-      // Show the button on hover
-      document.getElementById('fish-btn').style.display = 'block';
-    });
-    document.getElementById('fish').addEventListener('mouseout', function() {
-      // Show the button on hover
-      document.getElementById('fish-btn').style.display = 'none';
-    });
-    document.getElementById('fish').addEventListener('mouseover', function() {
-      // Show the button on hover
-      document.getElementById('fish-btn').style.display = 'block';
-    });
-    //fanum and fanum-btn
-    document.getElementById('fanum-btn').addEventListener('mouseover', function() {
-      // Show the button on hover
-      document.getElementById('fanum-btn').style.display = 'block';
-    });
-    document.getElementById('fanum').addEventListener('mouseout', function() {
-      // Show the button on hover
-      document.getElementById('fanum-btn').style.display = 'none';
-    });
-    document.getElementById('fanum').addEventListener('mouseover', function() {
-      // Show the button on hover
-      document.getElementById('fanum-btn').style.display = 'block';
-    });
-  </script>
+    <button id="scrollToTopBtn">&#8679; Top</button>
+    <button id="main2" onclick="openFeatures()">Features</button>
+
+    <div id="main3" class="center-container">
+        <section>
+            <h2>Use for AI part</h2>
+            <form id="uploadForm">
+                <input type="file" id="myFile" name="filename">
+                <input type="submit" value="Upload">
+            </form>
+        </section>
+    </div>
+
+    <div id="bottom_1">
+        <h2>Recommended Skincare</h2>
+        <h3>Best Sellers</h3>
+        <div style="display: flex; flex-direction: column;">
+            <section>
+                <img src="Hyperpigmentation%20conrad%20challenge.png" alt="Hyperpigmentation_Solution_Image" id="sigma">
+                <button id="sigma-btn" class="sigma">Buy Now</button>
+                <p style="font-size: 25px;">Price: $9.99</p>
+            </section>
+            <section>
+                <img src="ohio cream.png" alt="Fluorouracil Cream" id="ohio">
+                <button id="ohio-btn" class="sigma">Buy Now</button>
+                <p style="font-size: 25px;">Price: $11.99</p>
+            </section>
+            <section>
+                <img src="SKIBIDI_2.png" alt="Moisturizer" id="fish">
+                <button id="fish-btn" class="sigma">Buy Now</button>
+                <p style="font-size: 25px;">Price: $7.99</p>
+            </section>
+            <section>
+                <img src="Sunscreen.png" alt="Sunscreen" id="fanum">
+                <button id="fanum-btn" class="sigma">Buy Now</button>
+                <p style="font-size: 25px;">Price: $6.99</p>
+            </section>
+        </div>
+    </div>
+
     <div id="bottom" class="center-container">
-      <form id="contactForm" action="https://formspree.io/f/mzbnpodn" method="POST">
-        <h2>Contact</h2>
-        <input type="text" id="name" name="name" placeholder="Your Name" required>
-        <input type="email" id="email" name="email" placeholder="Email ID" required>
-        <textarea id="message" name="message" rows="4" placeholder="How can we help you?" required></textarea>
-        <button type="submit" id="submit">Submit</button>
-      </form>
+        <form id="contactForm" action="https://formspree.io/f/mzbnpodn" method="POST">
+            <h2>Contact</h2>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="email" id="email" name="email" placeholder="Email ID" required>
+            <textarea id="message" name="message" rows="4" placeholder="How can we help you?" required></textarea>
+            <button type="submit" id="submit">Submit</button>
+        </form>
     </div>
-  <script>  
-    function scrollToSection(sectionId) {
-      var section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-    document.addEventListener("DOMContentLoaded", function () {
 
-        var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+    <script>
+        function scrollToSection(sectionId) {
+            var section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
 
-        window.addEventListener("scroll", function () {
-            // Show scroll-to-top button when scrolling down
+        function openAIMODEL() {
+            window.open('AI-Model.html');
+            return false;
+        }
+
+        function openFeatures() {
+            window.open('features.html');
+        }
+
+        function openRosacea() {
+            window.open('contact.html');
+            return false;
+        }
+
+        // Buy button event listeners
+        ['sigma', 'ohio', 'fish', 'fanum'].forEach(id => {
+            document.getElementById(`${id}-btn`).addEventListener('click', function() {
+                Swal.fire({
+                    position: 'top',
+                    icon: 'success',
+                    title: 'Purchase Successful',
+                    text: 'One item added to cart.',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            });
+
+            // Hover effects
+            document.getElementById(id).addEventListener('mouseover', function() {
+                document.getElementById(`${id}-btn`).style.display = 'block';
+            });
+            document.getElementById(id).addEventListener('mouseout', function() {
+                document.getElementById(`${id}-btn`).style.display = 'none';
+            });
+            document.getElementById(`${id}-btn`).addEventListener('mouseover', function() {
+                this.style.display = 'block';
+            });
+        });
+
+        // Scroll to top button
+        window.addEventListener("scroll", function() {
+            var scrollToTopBtn = document.getElementById("scrollToTopBtn");
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                 scrollToTopBtn.style.display = "block";
             } else {
@@ -432,23 +289,18 @@
             }
         });
 
-        scrollToTopBtn.addEventListener("click", function () {
-            // Scroll to the top smoothly when the button is clicked
+        document.getElementById("scrollToTopBtn").addEventListener("click", function() {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         });
 
-    });
-  </script>
-  <script>  
-    document.getElementById('submit').addEventListener('mouseover', function() {
-        // Show the button on hover
-        document.getElementById('submit').style.display = 'block';
-    });
-    document.getElementById('submit').addEventListener('mouseout', function() {
-      //BUTTON SHOW TEEHEE
-      document.getElementById('submit').style.display = 'block';
-    });
-  </script>
+        // Submit button display
+        document.getElementById('submit').addEventListener('mouseover', function() {
+            this.style.display = 'block';
+        });
+        document.getElementById('submit').addEventListener('mouseout', function() {
+            this.style.display = 'block';
+        });
+    </script>
 </body>
 </html>
