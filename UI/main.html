@@ -235,7 +235,7 @@
   <nav>
     <img style="height: 15%; width: 15%;" src="logo.webp" alt="logo">
     <button class="nav-button" onclick="scrollToSection('main1')">Home</button>
-    <button class="nav-button" onclick="scrollToSection('main2')">Insert Details</button>
+    <button class="nav-button" onclick="return openAIMODEL()">Insert Details</button>
     <button class="nav-button" onclick="scrollToSection('main3')">Data Visualization</button>
     <button class="nav-button" onclick="return openRosacea()">Contact</button>
   </nav>
@@ -249,6 +249,11 @@
     </section>
   </div>
   <button id="scrollToTopBtn">&#8679; Top</button>
+    <script>
+      function openAIMODEL() {
+        window.open('AI-Model.html');
+      }
+    </script>
     <script>
       function openFeatures() {
         window.open('features.html');

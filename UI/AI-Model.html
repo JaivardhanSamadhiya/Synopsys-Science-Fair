@@ -3,107 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Model</title>
+    <title>Phage Host Prediction</title>
+    <style>
+        /* Previous styles remain the same */
+        :root {
+            --primary-dark: #1a1a1a;
+            --secondary-dark: #2d2d2d;
+            --accent-blue: #1e3d59;
+            --text-light: #e0e0e0;
+            --error-red: #ff6b6b;
+            --warning-yellow: #ffd700;
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .requirements {
+            background-color: var(--secondary-dark);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--warning-yellow);
+        }
+
+        .file-input-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            border: 2px dashed var(--accent-blue);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn {
+            background-color: var(--accent-blue);
+            color: var(--text-light);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .submit-btn:disabled {
+            background-color: #4a4a4a;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .submit-btn:not(:disabled):hover {
+            background-color: #2a5070;
+        }
+
+        .file-info {
+            margin-top: 1rem;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        /* Rest of your previous styles */
+    </style>
 </head>
 <body>
-    <style>
-        .center-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          min-height: 60vh; /* Adjusted minimum height for better centering */
-        }
-        input[type="file"],
-        input[type="submit"] {
-          width: 80%;
-          padding: 10px;
-          margin: 10px 0;
-          box-sizing: border-box;
-          border: 1px solid #ccc; /* Added a border for input elements */
-          border-radius: 4px; /* Rounded corners */
-        }
-        input[type="submit"],
-        .scroll-button {
-          background-color: #333;
-          color: #fff;
-          border: none;
-          cursor: pointer;
-          text-decoration: none; /* Removed underline */
-          padding: 12px 24px;
-          transition: background-color 0.3s, color 0.3s; /* Added color transition */
-        }
+    <div class="container">
+        <header class="header">
+            <h1>Phage Host Prediction</h1>
+            <p>Upload your CSV file to predict phage-host interactions</p>
+        </header>
 
-        input[type="submit"]:hover,
-        .scroll-button:hover {
-          background-color: #555; /* Darker background on hover */
-        }
+        <div class="requirements">
+            <h3>Required CSV Format</h3>
+            <ul>
+                <li>• Phage_ID and Host_ID columns</li>
+                <li>• Phage_GC_Content and Host_GC_Content columns</li>
+                <li>• Phage_Kmer columns</li>
+            </ul>
+        </div>
 
-    /* Adjustments for the question input */
-        #bottom input[type="text"] {
-          width: calc(80% - 22px); /* Adjusted width for both input fields */
-          padding: 10px;
-        }
-        form {
-          display: flex;
-          flex-direction: column;
-          padding: 2vw 4vw;
-          width: 90%;
-          max-width: 600px;
-          border-radius: 10px;
-          font-family: Arial, sans-serif;
-          background: white; /* Optional: set a background for the form */
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for better visibility */
-        }
-        form input, form textarea{
-          border: 0;
-          margin: 10px 0;
-          padding: 20px;
-          outline: none;
-          background: #f5f5f5;
-          font-size: 16px;
-          margin-bottom: 20px;
-          font-family: Arial;
-        }
-        ::placeholder{
-          font-family: Arial;
-        }
-        form button{
-          padding: 15px;
-          background: #ff5361;
-          color: #fff;
-          border: 0;
-          font-size: 18px;
-          outline: none;
-          cursor: pointer;
-          width: 150px;
-          margin: 20px auto 0;
-          border-radius: 30px;
-        }
-        form h1{
-          font-weight: 900;
-          text-align: center;
-          font-size: 35px;
-          font-family: "Oswald", serif;
-          font-optical-sizing: auto
-        }
+        <main>
+            <section class="upload-section">
+                <div class="file-input-container">
+                    <div class="file-input-wrapper">
+                        <input type="file" class="file-input" accept=".csv" id="csvFile">
+                        <div class="upload-text">
+                            <div class="upload-icon">📄</div>
+                            <p>Drag and drop your CSV file here or click to browse</p>
+                        </div>
+                    </div>
+                    <div class="file-info" id="fileInfo"></div>
+                    <button class="submit-btn" id="submitBtn" disabled>Analyze Data</button>
+                </div>
+                <div class="loading" id="loading" style="display: none;">Processing your data...</div>
+                <div class="error-message" id="errorMessage" style="display: none;">
+                    <h4>Error Details</h4>
+                    <div id="errorDetails"></div>
+                </div>
+            </section>
 
-        section {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          margin: 5px 0; /* Reduce top and bottom margins */
-          position: relative; /* Position relative for positioning the button */
-        }
-    </style>
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <h2>Prediction Results</h2>
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Sample</th>
+                            <th>Prediction</th>
+                            <th>Confidence</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsTableBody"></tbody>
+                </table>
+            </section>
+        </main>
+    </div>
 
-    <div id="main3" class="center-container">
-    <section>
-        <form id="uploadForm">
-            <h1>Upload CSV File</h1>
-            <input type="file" id="myFile" name="filename">
-            <input type="submit" value="Upload">
-        </form>
-    </section>
-  </div>
+    <script>
+        const fileInput = document.getElementById('csvFile');
+        const submitBtn = document.getElementById('submitBtn');
+        const fileInfo = document.getElementById('fileInfo');
+        const loading = document.getElementById('loading');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorDetails = document.getElementById('errorDetails');
+        const resultsSection = document.getElementById('resultsSection');
+        const resultsTableBody = document.getElementById('resultsTableBody');
+
+        // File input change handler
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) {
+                submitBtn.disabled = true;
+                fileInfo.textContent = '';
+                return;
+            }
+
+            // Check if file has .csv extension
+            if (file.name.toLowerCase().endsWith('.csv')) {
+                submitBtn.disabled = false;
+                fileInfo.textContent = `Selected file: ${file.name} (${(file.size / (1024 * 1024)).toFixed(2)} MB)`;
+                errorMessage.style.display = 'none';
+            } else {
+                submitBtn.disabled = true;
+                fileInfo.textContent = '';
+                errorDetails.textContent = 'Please select a valid CSV file';
+                errorMessage.style.display = 'block';
+            }
+        });
+
+        // Submit button click handler
+        submitBtn.addEventListener('click', async () => {
+            const file = fileInput.files[0];
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                loading.style.display = 'block';
+                resultsSection.style.display = 'none';
+                errorMessage.style.display = 'none';
+                submitBtn.disabled = true;
+
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to process the data');
+                }
+
+                // Display results
+                resultsTableBody.innerHTML = '';
+                data.prediction.forEach((pred, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>Sample ${index + 1}</td>
+                        <td>${pred === 1 ? 'Positive' : 'Negative'}</td>
+                        <td>${(data.confidence[index] * 100).toFixed(2)}%</td>
+                    `;
+                    resultsTableBody.appendChild(row);
+                });
+                resultsSection.style.display = 'block';
+
+            } catch (error) {
+                errorDetails.textContent = error.message;
+                errorMessage.style.display = 'block';
+            } finally {
+                loading.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
 </body>
 </html>
