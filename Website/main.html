@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bacteriophage AI Combinations</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Lines&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400&display=swap">
+    
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="main.css">
+    
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+<body>
+    <nav>
+        <img src="logo.webp" alt="logo">
+        <button class="nav-button" onclick="scrollToSection('main1')">Home</button>
+        <button class="nav-button" onclick="return openAIMODEL()">Insert Details</button>
+        <button class="nav-button" onclick="scrollToSection('main3')">Data Visualization</button>
+        <button class="nav-button" onclick="return openRosacea()">Contact</button>
+    </nav>
+
+    <div id="main1" class="center-container">
+        <section>
+            <h2>Introduction</h2>
+            <p>Traditional antibiotics often fail, especially against multidrug-resistant (MDR) bacteria. Bacteriophages (phages), discovered in 1919, provide a promising therapeutic opportunity but have seen limited use due to a lack of investment in phage standardization and regulatory frameworks. This research seeks to explore phage therapy as a viable alternative or complement to conventional antibiotics, aiming to establish standardized testing methodologies for clinical application. By harnessing artificial intelligence to create personalized combinations of phages, specifically built to patients needs, the chances of resistance developing drops dramatically.</p>
+        </section>
+    </div>
+
+    <button id="scrollToTopBtn">&#8679; Top</button>
+    <button id="main2" onclick="openFeatures()">Features</button>
+
+    <div id="main3" class="center-container">
+        <section>
+            <h2>Use for AI part</h2>
+            <form id="uploadForm">
+                <input type="file" id="myFile" name="filename">
+                <input type="submit" value="Upload">
+            </form>
+        </section>
+    </div>
+
+    <div id="bottom_1">
+        <h2>Recommended Skincare</h2>
+        <h3>Best Sellers</h3>
+        <div style="display: flex; flex-direction: column;">
+            <section>
+                <img src="Hyperpigmentation%20conrad%20challenge.png" alt="Hyperpigmentation_Solution_Image" id="sigma">
+                <button id="sigma-btn" class="sigma">Buy Now</button>
+                <p style="font-size: 25px;">Price: $9.99</p>
+            </section>
+            <section>
+                <img src="ohio cream.png" alt="Fluorouracil Cream" id="ohio">
+                <button id="ohio-btn" class="sigma">Buy Now</button>
+                <p style="font-size: 25px;">Price: $11.99</p>
+            </section>
+            <section>
+                <img src="SKIBIDI_2.png" alt="Moisturizer" id="fish">
+                <button id="fish-btn" class="sigma">Buy Now</button>
+                <p style="font-size: 25px;">Price: $7.99</p>
+            </section>
+            <section>
+                <img src="Sunscreen.png" alt="Sunscreen" id="fanum">
+                <button id="fanum-btn" class="sigma">Buy Now</button>
+                <p style="font-size: 25px;">Price: $6.99</p>
+            </section>
+        </div>
+    </div>
+
+    <div id="bottom" class="center-container">
+        <form id="contactForm" action="https://formspree.io/f/mzbnpodn" method="POST">
+            <h2>Contact</h2>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="email" id="email" name="email" placeholder="Email ID" required>
+            <textarea id="message" name="message" rows="4" placeholder="How can we help you?" required></textarea>
+            <button type="submit" id="submit">Submit</button>
+        </form>
+    </div>
+    <!-- Your JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>
