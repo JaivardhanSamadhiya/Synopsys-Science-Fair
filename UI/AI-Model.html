@@ -24,7 +24,6 @@
         body {
             background-color: var(--primary-dark);
             color: var(--text-light);
-            line-height: 1.6;
             padding: 2rem;
         }
 
@@ -40,23 +39,20 @@
 
         .header h1 {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
         }
 
         .upload-section {
             background-color: var(--secondary-dark);
             padding: 2rem;
             border-radius: var(--border-radius);
-            margin-bottom: 2rem;
+            text-align: center;
         }
 
         .file-input-wrapper {
             border: 2px dashed var(--accent-blue);
             padding: 2rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            border-radius: var(--border-radius);
             cursor: pointer;
+            border-radius: var(--border-radius);
         }
 
         .file-input {
@@ -66,13 +62,13 @@
         .submit-btn {
             background-color: var(--accent-blue);
             color: white;
-            border: none;
             padding: 1rem 2rem;
             border-radius: var(--border-radius);
             cursor: pointer;
             width: 100%;
             font-size: 1rem;
             margin-top: 1rem;
+            border: none;
         }
 
         .submit-btn:disabled {
@@ -166,8 +162,6 @@
 
     <script>
         const fileInput = document.getElementById('fileInput');
-        const dropText = document.getElementById('dropText');
-        const fileInfo = document.getElementById('fileInfo');
         const submitBtn = document.getElementById('submitBtn');
         const loadingStatus = document.getElementById('loadingStatus');
         const errorStatus = document.getElementById('errorStatus');
@@ -175,15 +169,12 @@
         const resultsBody = document.getElementById('resultsBody');
 
         fileInput.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                fileInfo.style.display = 'block';
-                fileInfo.textContent = `Selected file: ${file.name}`;
+            if (e.target.files[0]) {
                 submitBtn.disabled = false;
             }
         });
 
-        submitBtn.addEventListener('click', () => {
+        submitBtn.addEventListener('click', async () => {
             const file = fileInput.files[0];
             if (!file) return;
 
@@ -194,43 +185,28 @@
             errorStatus.style.display = 'none';
             resultsSection.style.display = 'none';
 
-            fetch('http://127.0.0.1:5000/predict', {
-                method: 'POST',
-                body: formData,
-            })
-            .then(response => response.json())
-            .then(data => {
-                loadingStatus.style.display = 'none';
+            try {
+                const response = await fetch('http://127.0.0.1:5000/predict', {
+                    method: 'POST',
+                    body: formData,
+                });
+                const data = await response.json();
 
+                loadingStatus.style.display = 'none';
                 if (data.error) {
-                    showError(data.error);
+                    errorStatus.textContent = data.error;
+                    errorStatus.style.display = 'block';
                 } else {
-                    displayResults(data);
+                    resultsSection.style.display = 'block';
+                    resultsBody.innerHTML = data.prediction.map((pred, i) => `
+                        <tr><td>Sample ${i + 1}</td><td>${pred}</td><td>${data.confidence[i] * 100}%</td></tr>
+                    `).join('');
                 }
-            })
-            .catch(error => {
-                loadingStatus.style.display = 'none';
-                showError('An error occurred while processing the file.');
-            });
+            } catch {
+                errorStatus.textContent = 'Server error.';
+                errorStatus.style.display = 'block';
+            }
         });
-
-        function showError(message) {
-            errorStatus.textContent = message;
-            errorStatus.style.display = 'block';
-        }
-
-        function displayResults(data) {
-            resultsSection.style.display = 'block';
-            resultsBody.innerHTML = ''; // Clear previous results
-            data.prediction.forEach((prediction, index) => {
-                const row = `<tr>
-                                <td>Sample ${index + 1}</td>
-                                <td>${prediction}</td>
-                                <td>${(data.confidence[index] * 100).toFixed(2)}%</td>
-                            </tr>`;
-                resultsBody.innerHTML += row;
-            });
-        }
     </script>
 </body>
 </html>
