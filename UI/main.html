@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bacteriophage AI Combinations</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Lines&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400&display=swap">
+    
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <nav>
+        <img src="logo.webp" alt="logo">
+        <button class="nav-button" onclick="scrollToSection('main1')">Home</button>
+        <button class="nav-button" onclick="return openAIMODEL()">Insert Details</button>
+        <button class="nav-button" onclick="return openContact()">Contact</button>
+    </nav>
+
+    <div id="main1" class="center-container">
+        <section>
+            <h2>Introduction</h2>
+            <p>Traditional antibiotics often fail, especially against multidrug-resistant (MDR) bacteria. Bacteriophages (phages), discovered in 1919, provide a promising therapeutic opportunity but have seen limited use due to a lack of investment in phage standardization and regulatory frameworks. This research seeks to explore phage therapy as a viable alternative or complement to conventional antibiotics, aiming to establish standardized testing methodologies for clinical application. By harnessing artificial intelligence to create personalized combinations of phages, specifically built to patients needs, the chances of resistance developing drops dramatically.</p>
+        </section>
+    </div>
+    <button id="scrollToTopBtn">&#8679; Top</button>
+    <div id="main2" style="margin-top: 100px;">
+        <section>
+            <h2>Features</h2>
+            <ol>
+              <li>Genomic Data Integration - Merges bacterial (Staphylococcus aureus) and bacteriophage genome sequences into a unified dataset. </li>
+              <li>Automated Preprocessing- Converts raw genome FASTA files into a machine-learning-compatible format through multiple preprocessing steps. </li>
+              <li>Host-Phage Interaction Prediction - Uses AI to determine which bacteriophages can effectively target a given S. aureus strain. </li>
+              <li>Optimized Phage Cocktail Design - Selects the best combination of phages for personalized therapy.</li>
+              <li>Supervised Machine Learning Model - Employs a tree-based model to predict optimal phage therapy.</li>
+              <li>Performance Metrics - Evaluates AI predictions using accuracy, precision, recall, F1-score, and AUC.</li>
+              <li>User Input Handling - Accepts bacterial genome data uploaded by healthcare professionals for personalized recommendations.</li>
+            </ol>
+            <h2 style="margin-top: 100px;">Web Interface & Usability</h2>
+            <ol>
+              <li>User-Friendly Interface - Provides a streamlined web-based platform for users to upload and analyze data.</li>
+              <li>Automated Workflow Execution - Runs all preprocessing and AI model steps automatically upon data upload.</li>
+              <li>Real-Time Processing - Processes genome sequences quickly for fast results.</li>
+              <li>Error Handling & Validation - Checks input data for formatting issues and missing information.</li>
+            </ol>
+          </section>
+    </div>
+    <footer>
+        <p>Staphylococcus AI Phage Therapy Solutions</p>
+        <p>Jaivardhan Samadhiya, Seth Carlson, and Cody Tran</p>
+    </footer>
+    <!-- Your JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>

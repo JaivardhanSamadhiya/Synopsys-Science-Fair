@@ -123,3 +123,8 @@ tr:hover {
 td {
     color: var(--primary-dark);
 }
+
+.resultsBody{
+    margin-left: auto;
+    margin-right: auto;
+}

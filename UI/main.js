@@ -10,27 +10,10 @@
             return false;
         }
 
-        function openFeatures() {
-            window.open('features.html');
-        }
-
-        function openRosacea() {
+        function openContact() {
             window.open('contact.html');
             return false;
         }
-
-        // Buy button event listeners
-        ['sigma', 'ohio', 'fish', 'fanum'].forEach(id => {
-            document.getElementById(`${id}-btn`).addEventListener('click', function() {
-                Swal.fire({
-                    position: 'top',
-                    icon: 'success',
-                    title: 'Purchase Successful',
-                    text: 'One item added to cart.',
-                    showConfirmButton: false,
-                    timer: 2000
-                });
-            });
 
             // Hover effects
             document.getElementById(id).addEventListener('mouseover', function() {
@@ -42,27 +25,17 @@
             document.getElementById(`${id}-btn`).addEventListener('mouseover', function() {
                 this.style.display = 'block';
             });
-        });
 
         // Scroll to top button
         window.addEventListener("scroll", function() {
             var scrollToTopBtn = document.getElementById("scrollToTopBtn");
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            if (window.scrollY > 50) { 
                 scrollToTopBtn.style.display = "block";
             } else {
                 scrollToTopBtn.style.display = "none";
             }
         });
-
+        
         document.getElementById("scrollToTopBtn").addEventListener("click", function() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        });
-
-        // Submit button display
-        document.getElementById('submit').addEventListener('mouseover', function() {
-            this.style.display = 'block';
-        });
-        document.getElementById('submit').addEventListener('mouseout', function() {
-            this.style.display = 'block';
-        });
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });        
