@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend communication
 
 # Increase file upload size limit to 10MB
-app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100MB limit
+app.config['MAX_CONTENT_LENGTH'] = 500 * 1024 * 1024  #500MB limit
 
 @app.route('/predict', methods=['POST'])
 def predict():
